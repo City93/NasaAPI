@@ -7,7 +7,7 @@ const controllers = require('../controllers/landings')
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
-router.get('/astronomy/landings', controllers.landings)
+router.get('/astronomy/landings', controllers.getLandings)
 router.get('/astronomy/landings/mass/:mass', controllers.mass)
 
 module.exports = router;
