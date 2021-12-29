@@ -4,33 +4,29 @@ const Landing = require('../models/landing')
 const landings = (req, res) =>{
     res.send('esto es landings')
 }
-const mass = (req, res) =>{
+const mass = async (req, res) =>{
     console.log(req.params.mass)
-    console.log(apiKey)
+    const massNumber = parseInt(req.params.mass) || parseInt(req.query.minimum_mass)
+    if(massNumber){
+        const data = await Landing.find({mass: { $gte: massNumber }})
+        console.log(data.slice(0,3))
+    }
 }
 
+const landingClass = async (req,res) =>{
+    console.log(req.params.class)
+    const className = req.params.class
+    if (className){
+        const data = await Landing.find({recclass: { $eq: className}})
+        console.log(data.slice(0,3))
+    }
 
-const getLandings = async (req,res) => {   
-    
-    const data = await Landing.find({mass: { $gty: 1001 }})
-    console.log({data})
+}
 
-    // Consulta 
-    // Los datos
-    // del producto correspondiente
-    // let data;
-    // if(req.params.id){
-        //     data = await dataProduct.getProductById(req.params.id);
-        //     res.status(200).render('product', {products:[data]}) // Creo un array con 1 dato
-        // } else{
-            //     data = await dataProduct.getAllProducts();
-            //     res.status(200).render('product',{products:data}) // Envio un array con N datos
-            // }
-        }
         const controllers = {
             landings,
             mass,
-            getLandings
+            landingClass
         }
         
 module.exports = controllers

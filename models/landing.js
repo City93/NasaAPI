@@ -5,7 +5,7 @@ const objectSchema = {
     name: String,
     nametype: String,
     recclass: String,
-    mass: String,
+    mass: Number,
     fall: String,
     year: String,
     reclat: String,

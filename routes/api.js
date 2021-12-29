@@ -7,7 +7,9 @@ const controllers = require('../controllers/landings')
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
-router.get('/astronomy/landings', controllers.getLandings)
+
 router.get('/astronomy/landings/mass/:mass', controllers.mass)
+router.get('/astronomy/landings?minimum_mass', controllers.mass)
+router.get('/astronomy/landings/class/:class', controllers.landingClass)
 
 module.exports = router;
