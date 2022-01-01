@@ -2,13 +2,13 @@ const mongoose = require('mongoose')
 
 const objectSchema = {
     designation: String,
-    discovery_date: Date,
-    h_mag: Number,
-    moid_au: Number,
-    q_au_1: Number,
-    q_au_2: Number,
-    period_yr: Number,
-    i_deg: Number,
+    discovery_date: String,
+    h_mag: String,
+    moid_au: String,
+    q_au_1: String,
+    q_au_2: String,
+    period_yr: String,
+    i_deg: String,
     pha: String,
     orbit_class: String
 };
