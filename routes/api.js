@@ -8,8 +8,8 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get('/astronomy/landings/mass/:mass', controllers.mass)
-router.get('/astronomy/landings?minimum_mass', controllers.mass)
+router.get('/astronomy/landings/mass/:mass', controllers.landings)
+router.get('/astronomy/landings', controllers.landings)
 router.get('/astronomy/landings/class/:class', controllers.landingClass)
 
 module.exports = router;
