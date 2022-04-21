@@ -1,23 +1,26 @@
 const Nea = require('../models/neas')
 
 const neas = async (req, res) =>{
+    const className = req.query.class
     const fromDate = req.query.from
     const toDate = req.query.to
-    const className = req.query.class
+
     try{
-        if(className){
-            const classSearch = className.charAt(0).toUpperCases() + className.slice(1)
-            const data = await Nea.find({orbit_class: className})
+        if(req.query.class){
+            const classSearch = className[0].toUpperCase() + className.slice(1)
+            const data = await Nea.find({orbit_class: classSearch})
             res.status(200).json(data)
-        }
-        if(fromDate || toDate){
+        } else if(fromDate || toDate){
             console.log({fromDate} , {toDate})
             const data = await Nea.find({discovery_date: { $gte: fromDate||0, $lte: toDate||2100}})
             res.status(200).json(data)
             // "2011-01-07T00:00:00.000"
+        } else {
+            const data = await Nea.find({})
+            res.status(200).json(data)
         }
     } catch (err){
-        res.status(400).json({'error':err})
+        console.error(err)
     }
 
 }

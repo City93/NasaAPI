@@ -15,9 +15,12 @@ const landings = async (req, res) =>{
             console.log({fromDate} , {toDate})
             const data = await Landing.find({year: { $gte: fromDate||0, $lte: toDate||2100}})
             res.status(200).json(data)
+        } else{
+            const data = await Landing.find({})
+            res.status(200).json(data)
         }
     } catch (err){
-        res.status(400).json({'error':err})
+            res.status(400).json({'error':err})
     }
 }
 
