@@ -23,6 +23,7 @@ const neas = async (req, res) =>{
         console.error(err)
     }
 
+    
 }
 
 const controllers = {
